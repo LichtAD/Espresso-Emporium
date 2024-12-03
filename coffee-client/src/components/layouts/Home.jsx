@@ -3,6 +3,7 @@ import Banner from '../main/Banner';
 import AllProducts from '../main/AllProducts';
 import FollowUs from '../pages/FollowUs';
 import { useLoaderData } from 'react-router-dom';
+import ContactUs from '../pages/ContactUs';
 
 const Home = () => {
 
@@ -16,6 +17,7 @@ const Home = () => {
             <Banner></Banner>
             <AllProducts coffees={coffees} setCoffees={setCoffees}></AllProducts>
             <FollowUs></FollowUs>
+            <ContactUs></ContactUs>
         </div>
     );
 };

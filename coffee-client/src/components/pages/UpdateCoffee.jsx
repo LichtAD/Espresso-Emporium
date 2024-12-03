@@ -3,6 +3,7 @@ import Header from './Header';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { NavLink, useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import ContactUs from './ContactUs';
 
 const UpdateCoffee = () => {
 
@@ -123,6 +124,9 @@ const UpdateCoffee = () => {
 
                 </div>
             </div>
+
+            <ContactUs></ContactUs>
+            
         </div>
     );
 };

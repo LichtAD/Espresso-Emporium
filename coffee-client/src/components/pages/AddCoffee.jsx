@@ -4,6 +4,7 @@ import Header from './Header';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { NavLink, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import ContactUs from './ContactUs';
 
 const AddCoffee = () => {
 
@@ -119,6 +120,9 @@ const AddCoffee = () => {
 
                 </div>
             </div>
+
+            <ContactUs></ContactUs>
+            
         </div>
     );
 };

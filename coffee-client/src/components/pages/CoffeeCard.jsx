@@ -64,7 +64,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
                 <h3>Taste: {taste}</h3>
             </div>
             <div className='w-[20%] flex flex-col justify-center items-center gap-4'>
-                <div className='bg-[#D2B48C] rounded-lg btn'><FaRegEye /></div>
+                <NavLink to={`/coffeeDetails/${_id}`} className='bg-[#D2B48C] rounded-lg btn'><FaRegEye /></NavLink>
                 <NavLink to={`/updateCoffee/${_id}`} className='bg-dark_brown text-white_color rounded-lg btn'><FaPen /></NavLink>
                 <div onClick={() => { handleDeleteCoffee(_id) }} className='bg-[#EA4744] text-white_color rounded-lg btn'><MdDelete /></div>
             </div>

@@ -6,7 +6,7 @@ const AllProducts = ({ coffees, setCoffees }) => {
 
     return (
         // bg-[url('/images/more/7.jpg')] bg-cover bg-center bg-no-repeat
-        <div className="my-20 bg-[url('/images/more/1.png')] object-cover bg-center bg-no-repeat">
+        <div className="my-20 bg-[url('/images/more/1.png')] bg-contain bg-no-repeat">
             {/* </div><div className="flex justify-center items-center flex-col gap-2 absolute z-10 top-0 left-1/2 transform -translate-x-1/2 max-w-[50%] mx-auto text-center"> */}
             <div className='flex justify-center items-center flex-col gap-2'>
                 <h2 className='font-railway'>--- Sip & Savor ---</h2>
