@@ -1,12 +1,14 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Footer from '../pages/Footer';
 
 const Root = () => {
     return (
-        <div>
-            <h1>Nav</h1>
-            <Outlet></Outlet>
-            <h6>Footer</h6>
+        <div className='font-rancho'>
+            <div className='min-h-screen'>
+                <Outlet></Outlet>
+            </div>
+            <Footer></Footer>
         </div>
     );
 };

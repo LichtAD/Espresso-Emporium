@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config();
 
 const express = require('express');
@@ -25,10 +25,73 @@ const client = new MongoClient(uri, {
 async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
+        // await client.connect();
+
+        // ! db name and collection
+        const database = client.db("coffeeDB2");
+        const coffeeCollection2 = database.collection("coffees2");
+
+        // ! crate
+        app.post('/coffees2', async (req, res) => {
+            const newCoffee = req.body;
+            console.log(newCoffee);
+
+            const result = await coffeeCollection2.insertOne(newCoffee);
+            res.send(result);
+        })
+
+        // ! read
+        app.get('/coffees2', async (req, res) => {
+            const cursor = coffeeCollection2.find();
+            const result = await cursor.toArray();
+            res.send(result);
+        })
 
 
-        // kaj hbe
+        // ! delete
+        app.delete('/coffees2/:id', async (req, res) => {
+            const id = req.params.id;
+            console.log('plz delete', id);
+
+            const query = { _id: new ObjectId(id) };
+            const result = await coffeeCollection2.deleteOne(query);
+            res.send(result);
+        })
+
+
+        // ! update - 1 - get specific coffee data
+        app.get('/coffees2/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const result = await coffeeCollection2.findOne(query);
+            res.send(result);
+        })
+
+
+        // ! update - 2 - update specific coffee data
+        app.put('/coffees2/:id', async (req, res) => {
+            const id = req.params.id;
+            const updatedCoffee = req.body;              // body thk info paisi
+            console.log('updated coffee', updatedCoffee);
+
+            const filter = { _id: new ObjectId(id) };
+            const options = { upsert: true };
+            const updatedCoffeeDoc = {                 // info gula ekta updated variable e set krsi
+                $set: {
+                    coffee_name: updatedCoffee.coffee_name,
+                    chef_name: updatedCoffee.chef_name,
+                    supplier: updatedCoffee.supplier,
+                    taste: updatedCoffee.taste,
+                    category: updatedCoffee.category,
+                    details: updatedCoffee.details,
+                    photo_url: updatedCoffee.photo_url,
+                }
+            }
+
+            const result = await coffeeCollection2.updateOne(filter, updatedCoffeeDoc, options);       // filter kore oita update krsi
+            res.send(result);
+        })
+
 
 
         // Send a ping to confirm a successful connection
